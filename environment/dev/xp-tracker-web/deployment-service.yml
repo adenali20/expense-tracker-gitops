@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xp-tracker-web-dep
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: xp-tracker-web
+  template:
+    metadata:
+      name: xp-tracker-web
+      labels: 
+        app: xp-tracker-web
+    spec:
+      containers:
+        - name: xp-tracker-web
+          image: adenli/xp-tracker:latest
+  
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: xp-tracker-web-srv
+  namespace: dev
+spec:
+  type: ClusterIP
+  selector:
+    app: xp-tracker-web
+  ports:
+    - port: 3000
+      targetPort: 3000
+
+
+
+
+
+
+
+    
