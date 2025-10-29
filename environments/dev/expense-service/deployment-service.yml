@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xp-posts-dep
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: xp-posts
+  template:
+      metadata:
+        name: xp-posts
+        labels: 
+          app: xp-posts
+      spec:
+          containers:
+            - name: xp-posts
+              image: adenli/xp-posts:latest
+              
+              env:
+              - name: SPRING_PROFILES_ACTIVE
+                value: dev
+              - name: username
+                value: root
+              - name: password
+                value: root
+              - name: jdbc_url
+                value: mysql-srv
+              - name: database
+                value:  devdb 
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: xp-posts-srv
+  namespace: dev
+spec:
+  type: ClusterIP
+  selector:
+    app: xp-posts
+  ports:
+    - port: 8050
+      targetPort: 8050
+      
+  
+
+   
+
+
+
+    
