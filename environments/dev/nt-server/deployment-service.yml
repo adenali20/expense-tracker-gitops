@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: nt-server
-          image: adenli/ntserver:latest
+          image: adenli/ntserver:dev-13d5e67
   
 ---
 
