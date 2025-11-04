@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nt-server-dep
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: nt-server
+  template:
+    metadata:
+      name: nt-server
+      labels: 
+        app: nt-server
+    spec:
+      containers:
+        - name: nt-server
+          image: adenli/ntserver:latest
+  
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nt-server-srv
+  namespace: dev
+spec:
+  type: ClusterIP
+  selector:
+    app: nt-server
+  ports:
+    - port: 3001
+      targetPort: 3001
+
+
+
+
+
+
+
+    
