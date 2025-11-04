@@ -15,7 +15,7 @@ spec:
       spec:
           containers:
             - name: xp-posts
-              image: adenli/xp-posts:latest
+              image: adenli/xp-posts:dev-25ad854
               
               env:
               - name: SPRING_PROFILES_ACTIVE
