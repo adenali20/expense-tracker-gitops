@@ -16,26 +16,19 @@ spec:
       containers:
         - name: nt-server
           image: adenli/ntserver:dev-bc04ce5
-  
+          ports:
+            - containerPort: 3001
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: nt-server-srv
   namespace: dev
 spec:
-  type: ClusterIP
+  type: NodePort        # changed from ClusterIP
   selector:
     app: nt-server
   ports:
-    - port: 3001
-      targetPort: 3001
-
-
-
-
-
-
-
-    
+    - port: 3001         # internal service port
+      targetPort: 3001   # container port
+      nodePort: 31001    # external port accessible on node
