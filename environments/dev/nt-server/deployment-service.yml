@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nt-server
-          image: adenli/ntserver:dev-240cc3e
+          image: adenli/ntserver:dev-28e334b
           ports:
             - containerPort: 3001
 ---
