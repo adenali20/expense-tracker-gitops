@@ -9,7 +9,6 @@ spec:
       app: nt-server
   template:
     metadata:
-      name: nt-server
       labels: 
         app: nt-server
     spec:
@@ -25,10 +24,9 @@ metadata:
   name: nt-server-srv
   namespace: dev
 spec:
-  type: NodePort        # changed from ClusterIP
+  type: ClusterIP        # internal only
   selector:
     app: nt-server
   ports:
-    - port: 3001         # internal service port
+    - port: 3001         # service port inside cluster
       targetPort: 3001   # container port
-      nodePort: 31001    # external port accessible on node
