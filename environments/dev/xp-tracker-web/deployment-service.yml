@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: xp-tracker-web
-          image: adenli/xp-tracker:dev-91e12b4
+          image: adenli/xp-tracker:dev-7884aa2
   
 ---
 
